@@ -77,7 +77,7 @@ public class ExamenTwitter {
     /**
      * @author rpachotome
      * @param twitter
-     * @throws TwitterException Esta ultima aplicacion servira para poner un
+     * @throws TwitterException Este metodo servira para poner un
      * tweet
      */
     public static void Twitear(Twitter twitter) throws TwitterException {
@@ -85,7 +85,12 @@ public class ExamenTwitter {
         Status status = twitter.updateStatus(post);
         System.out.println("actualizado correctamente el estado a [" + status.getText() + "].");
     }
-
+  /**
+     * @author rpachotome
+     * @param twitter
+     * @throws TwitterException Este ultimo metodo servira para que los datos
+     * no esten en el codigo fuente de la aplicacion
+     */
     public static void cambioConfiguracion(Twitter twitter) {
         ConfigurationBuilder cb = new ConfigurationBuilder();
         cb.setDebugEnabled(true)
