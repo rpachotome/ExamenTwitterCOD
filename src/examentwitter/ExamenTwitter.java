@@ -35,9 +35,10 @@ public class ExamenTwitter {
                     .setOAuthAccessTokenSecret("rRfb5hCM3hgPcUWKTkdBw9nTRCISIgwTpGNZvlr3faQj1");
 
             Twitter twitter = new TwitterFactory(cb.build()).getInstance();
-            Twitear(twitter);
             LineaDeTiempo(twitter);
             BuscarTwitter(twitter);
+            cambioConfiguracion(twitter);
+            Twitear(twitter);
         } catch (TwitterException ex) {
             Logger.getLogger(ExamenTwitter.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -83,6 +84,17 @@ public class ExamenTwitter {
         String post = JOptionPane.showInputDialog(null, "Escribe lo que quieres twitear");
         Status status = twitter.updateStatus(post);
         System.out.println("actualizado correctamente el estado a [" + status.getText() + "].");
+    }
+
+    public static void cambioConfiguracion(Twitter twitter) {
+        ConfigurationBuilder cb = new ConfigurationBuilder();
+        cb.setDebugEnabled(true)
+                .setOAuthConsumerKey("*********************")
+                .setOAuthConsumerSecret("******************************************")
+                .setOAuthAccessToken("**************************************************")
+                .setOAuthAccessTokenSecret("******************************************");
+        TwitterFactory tf = new TwitterFactory(cb.build());
+        twitter = tf.getInstance();
     }
 
 }
